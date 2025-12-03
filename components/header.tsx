@@ -88,7 +88,7 @@ export function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="h-8 gap-2 px-3 hidden md:flex">
                 <Globe className="h-4 w-4" />
-                <span className="text-base">
+                <span className="text-[14px]">
                   {languages.find((lang) => lang.code === locale)?.label}
                 </span>
                 <ChevronDown className="h-3 w-3" />
@@ -101,7 +101,7 @@ export function Header() {
                   onClick={() => setLocale(lang.code as "ko" | "en" | "zh-TW")}
                   className="flex items-center justify-between cursor-pointer"
                 >
-                  <span className="flex-1">{lang.label}</span>
+                  <span className="flex-1 text-[14px]">{lang.label}</span>
                   {locale === lang.code && (
                     <Check className="h-4 w-4 text-primary" />
                   )}

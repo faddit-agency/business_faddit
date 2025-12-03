@@ -244,14 +244,6 @@ export function Hero() {
                 key={tab.id}
                 onClick={() => {
                   setActiveTab(tab.id);
-                  // Scroll to the feature section when button is clicked
-                  const featureId = getFeatureId(tab.id);
-                  setTimeout(() => {
-                    const element = document.getElementById(featureId);
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                  }, 100);
                 }}
                 onMouseEnter={() => setHoveredTab(tab.id)}
                 onMouseLeave={() => setHoveredTab(null)}
