@@ -18,18 +18,18 @@ export function Problem() {
       }`}
     >
       <div className="space-y-12">
-        <div className="text-center space-y-4">
+        <div className="text-left space-y-4">
           <h2 className="text-3xl font-bold md:text-4xl">{t.problem.title}</h2>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {t.problem.problems.map((problem, index) => (
-            <Card key={index} className="h-full">
+            <Card key={index} className="h-full bg-[#181818] text-white border-[#181818]">
               <CardHeader>
-                <CardTitle className="text-xl">{problem.title}</CardTitle>
+                <CardTitle className="text-xl text-white">{problem.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-slate-300 leading-relaxed">
                   {problem.description}
                 </p>
               </CardContent>

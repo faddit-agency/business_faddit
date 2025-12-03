@@ -2,8 +2,6 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { UserStories } from "@/components/user-stories";
 import { Logos } from "@/components/logos";
-import { Problem } from "@/components/problem";
-import { Solution } from "@/components/solution";
 import { Features } from "@/components/features";
 import { HowItWorks } from "@/components/how-it-works";
 import { MoodImage } from "@/components/mood-image";
@@ -19,8 +17,6 @@ export default function Home() {
         <Hero />
         <UserStories />
         <Logos />
-        <Problem />
-        <Solution />
         <Features />
         <HowItWorks />
         <MoodImage />

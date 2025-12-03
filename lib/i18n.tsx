@@ -3,9 +3,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { ko } from "@/locales/ko";
 import { en } from "@/locales/en";
+import { zhTW } from "@/locales/zh-TW";
 
-type Locale = "ko" | "en";
-type Translations = typeof ko | typeof en;
+type Locale = "ko" | "en" | "zh-TW";
+type Translations = typeof ko | typeof en | typeof zhTW;
 
 interface I18nContextType {
   locale: Locale;
@@ -21,7 +22,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Load saved locale from localStorage
     const savedLocale = localStorage.getItem("locale") as Locale | null;
-    if (savedLocale && (savedLocale === "ko" || savedLocale === "en")) {
+    if (savedLocale && (savedLocale === "ko" || savedLocale === "en" || savedLocale === "zh-TW")) {
       setLocaleState(savedLocale);
       // Update html lang attribute
       document.documentElement.lang = savedLocale;
@@ -35,7 +36,11 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = newLocale;
   };
 
-  const translations = (locale === "ko" ? ko : en) as Translations;
+  const translations = (
+    locale === "ko" ? ko : 
+    locale === "en" ? en : 
+    zhTW
+  ) as Translations;
 
   return (
     <I18nContext.Provider value={{ locale, setLocale, t: translations }}>

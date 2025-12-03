@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ArrowRight } from "lucide-react";
+import { Menu, ArrowRight, Globe, ChevronDown, Check } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Header() {
   const { t, locale, setLocale } = useI18n();
@@ -26,17 +32,23 @@ export function Header() {
     setMobileMenuOpen(false);
   };
 
+  const languages = [
+    { code: "ko", label: "한국어" },
+    { code: "en", label: "EN" },
+    { code: "zh-TW", label: "繁體中文" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto max-w-7xl flex h-20 items-center justify-between px-6 md:px-8">
+      <div className="container mx-auto max-w-7xl flex h-16 items-center justify-between px-6 md:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="https://res.cloudinary.com/dsg01xpat/image/upload/v1764743290/%E1%84%89%E1%85%B5%E1%86%B7%E1%84%87%E1%85%A9%E1%86%AF%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9__%E1%84%8C%E1%85%AE_%E1%84%91%E1%85%A2%E1%84%83%E1%85%B5%E1%86%BA_h2psij.png"
+            src="https://res.cloudinary.com/dsg01xpat/image/upload/v1764743399/black_e3hznn.svg"
             alt="faddit"
-            width={180}
-            height={60}
-            className="h-10 md:h-12 w-auto object-contain"
+            width={248}
+            height={55}
+            className="h-4 md:h-5 w-auto object-contain"
             priority
           />
         </Link>
@@ -45,25 +57,25 @@ export function Header() {
         <nav className="hidden items-center gap-8 md:flex">
           <button
             onClick={() => scrollToSection("product")}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.product}
           </button>
           <button
             onClick={() => scrollToSection("how-it-works")}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.howItWorks}
           </button>
           <button
             onClick={() => scrollToSection("pricing")}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.pricing}
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.contact}
           </button>
@@ -71,25 +83,32 @@ export function Header() {
 
         {/* Language Toggle & CTA Button */}
         <div className="flex items-center gap-4">
-          {/* Language Toggle */}
-          <div className="hidden md:flex gap-1">
-            <Button
-              variant={locale === "ko" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setLocale("ko")}
-              className="h-8 px-3 text-xs"
-            >
-              한국어
-            </Button>
-            <Button
-              variant={locale === "en" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setLocale("en")}
-              className="h-8 px-3 text-xs"
-            >
-              EN
-            </Button>
-          </div>
+          {/* Language Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="h-8 gap-2 px-3 hidden md:flex">
+                <Globe className="h-4 w-4" />
+                <span className="text-base">
+                  {languages.find((lang) => lang.code === locale)?.label}
+                </span>
+                <ChevronDown className="h-3 w-3" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-36">
+              {languages.map((lang) => (
+                <DropdownMenuItem
+                  key={lang.code}
+                  onClick={() => setLocale(lang.code as "ko" | "en" | "zh-TW")}
+                  className="flex items-center justify-between cursor-pointer"
+                >
+                  <span className="flex-1">{lang.label}</span>
+                  {locale === lang.code && (
+                    <Check className="h-4 w-4 text-primary" />
+                  )}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           {/* Get Started Button */}
           <Link
@@ -99,7 +118,7 @@ export function Header() {
             className="hidden md:flex"
           >
             <Button
-              className="h-10 px-6 rounded-full bg-black text-white hover:bg-black/90 transition-colors gap-2"
+              className="h-10 px-6 rounded-full text-white transition-colors gap-2 btn-black"
             >
               <span className="text-sm font-medium">
                 {locale === "ko" ? "시작하기" : "Get Started"}
@@ -145,25 +164,33 @@ export function Header() {
                 >
                   {t.header.nav.contact}
                 </button>
-                {/* Language Toggle in Mobile */}
-                <div className="flex gap-2 pt-4 border-t">
-                  <Button
-                    variant={locale === "ko" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setLocale("ko")}
-                    className="flex-1"
-                  >
-                    한국어
-                  </Button>
-                  <Button
-                    variant={locale === "en" ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setLocale("en")}
-                    className="flex-1"
-                  >
-                    EN
-                  </Button>
-                </div>
+                        {/* Language Toggle in Mobile */}
+                        <div className="flex gap-2 pt-4 border-t">
+                          <Button
+                            variant={locale === "ko" ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setLocale("ko")}
+                            className="flex-1"
+                          >
+                            한국어
+                          </Button>
+                          <Button
+                            variant={locale === "en" ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setLocale("en")}
+                            className="flex-1"
+                          >
+                            EN
+                          </Button>
+                          <Button
+                            variant={locale === "zh-TW" ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setLocale("zh-TW")}
+                            className="flex-1"
+                          >
+                            繁體中文
+                          </Button>
+                        </div>
                 {/* Get Started Button in Mobile */}
                 <Link
                   href="https://faddit.co.kr/sign/in"
@@ -172,7 +199,7 @@ export function Header() {
                   className="w-full"
                 >
                   <Button
-                    className="w-full h-12 rounded-full bg-black text-white hover:bg-black/90 transition-colors gap-2"
+                    className="w-full h-12 rounded-full text-white transition-colors gap-2 btn-black"
                   >
                     <span className="text-sm font-medium">
                       {locale === "ko" ? "시작하기" : "Get Started"}

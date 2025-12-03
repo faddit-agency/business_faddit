@@ -8,18 +8,18 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-background">
-      <div className="container mx-auto max-w-5xl px-4 py-12">
+      <div className="container mx-auto max-w-7xl px-4 py-12">
         <div className="grid gap-8 md:grid-cols-3">
           {/* Left: Logo and Description */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">{t.header.logo}</h3>
-            <p className="text-sm text-muted-foreground">{t.footer.description}</p>
+            <p className="text-base text-muted-foreground">{t.footer.description}</p>
           </div>
 
           {/* Center: Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Links</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="text-base font-semibold">Links</h4>
+            <ul className="space-y-2 text-base">
               <li>
                 <Link
                   href="#"
@@ -41,8 +41,8 @@ export function Footer() {
 
           {/* Right: Contact */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold">Contact</h4>
-            <p className="text-sm text-muted-foreground">
+            <h4 className="text-base font-semibold">Contact</h4>
+            <p className="text-base text-muted-foreground">
               <a
                 href={`mailto:${t.footer.email}`}
                 className="hover:text-foreground transition-colors"
@@ -54,8 +54,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">{t.footer.copyright}</p>
-          <p className="text-sm text-muted-foreground">{t.footer.currentLanguage}</p>
+          <p className="text-base text-muted-foreground">{t.footer.copyright}</p>
+          <p className="text-base text-muted-foreground">{t.footer.currentLanguage}</p>
         </div>
       </div>
     </footer>

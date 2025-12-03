@@ -25,9 +25,9 @@ export function Logos() {
           : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="container mx-auto max-w-5xl px-4 py-12">
+      <div className="container mx-auto max-w-7xl px-4 py-12">
         <div className="space-y-8">
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-base text-muted-foreground">
             {t.logos.title}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">

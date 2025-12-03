@@ -28,7 +28,7 @@ export function MoodImage() {
 
       {/* Overlay Text */}
       <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="container mx-auto max-w-5xl px-4">
+        <div className="container mx-auto max-w-7xl px-4">
           <p className="text-2xl md:text-3xl lg:text-4xl font-light text-center leading-relaxed max-w-3xl mx-auto">
             {t.moodImage.text}
           </p>

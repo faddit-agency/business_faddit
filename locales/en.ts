@@ -15,6 +15,33 @@ export const en = {
       "From emerging designers to growing labels, keep all your design-to-production information in one workspace.",
     ctaPrimary: "Request live demo",
     ctaSecondary: "See product features",
+    registerButton: "Register now to receive free templates",
+    tabs: {
+      workspace: {
+        label: "Workspace",
+        description: "Manage all your separately managed work items in one place. Supports sketch (JPG, PNG), technical drawing (AI, SVG), pattern (DXF, EMF) extensions",
+        viewMore: "View Workspace Details",
+        featureId: "feature-workspace",
+      },
+      "work-instruction": {
+        label: "Work Instruction",
+        description: "Manage all information systematically with digital work instructions. Upload and manage text, images, and files all at once.",
+        viewMore: "View Work Instruction Details",
+        featureId: "feature-work-instruction",
+      },
+      "pattern-cad": {
+        label: "Pattern (CAD)",
+        description: "Upload and manage CAD pattern files directly. Build an efficient design workflow through pattern revision history and version control.",
+        viewMore: "View Pattern (CAD) Details",
+        featureId: "feature-pattern-cad",
+      },
+      promotion: {
+        label: "Promotion (Production Agency)",
+        description: "Experience professional production management through production agency services. Collaborate with factory partners more systematically.",
+        viewMore: "View Promotion Details",
+        featureId: "product",
+      },
+    },
   },
   userStories: {
     title: "Stories from real faddit users",
@@ -22,23 +49,23 @@ export const en = {
       "From independent designers to small brands, managing collections with faddit.",
     testimonials: [
       {
-        name: "Designer Kim",
+        name: "Kim **",
         role: "Brand Designer",
-        brand: "BRAND A",
+        brand: "",
         quote:
           "Previously, we had to constantly switch between spreadsheets and messaging apps, but now we can see the entire lineup and factory communications on one screen.",
       },
       {
-        name: "Fashion Park",
+        name: "Park**",
         role: "Creative Director",
-        brand: "BRAND B",
+        brand: "",
         quote:
           "The work instruction writing that used to repeat every season has become simple, and collaboration with factories can now be managed much more systematically.",
       },
       {
-        name: "Studio Lee",
+        name: "Studio Da*",
         role: "Studio Director",
-        brand: "STUDIO C",
+        brand: "",
         quote:
           "We need to manage multiple brands simultaneously, and being able to quickly find information for each project has greatly improved work efficiency.",
       },
@@ -90,27 +117,42 @@ export const en = {
     ],
   },
   features: {
-    title: "Key features that connect design and production",
+    title: "A completely new fashion design solution",
+    subtitle: "Explore ideas freely and create fashion products immediately",
     items: [
       {
-        title: "Digital work instructions",
-        description: "Create and manage work instructions with text, images, and file uploads.",
+        id: "workspace",
+        title: "Workspace",
+        subtitle: "Manage design assets of various extensions at once",
+        description: "Supports a total of 10 extensions including sketches (JPG, PNG), technical drawings (AI, SVG), patterns (DXF, EMF), etc. Manage them by uploading directly within the work instruction.",
+        dotColor: "green",
+        imageUrl: "https://res.cloudinary.com/dsg01xpat/image/upload/v1764744193/%E1%84%8E%E1%85%A9%E1%84%80%E1%85%B5%E1%84%89%E1%85%A6%E1%84%90%E1%85%B5%E1%86%BC_fmgajq.png",
+        layout: "image-left",
       },
       {
-        title: "Factory-specific project board",
-        description:
-          "Check ongoing projects, quotes, and delivery information for each factory on one board.",
+        id: "work-instruction",
+        title: "Work Instruction",
+        subtitle: "Layout Diversity",
+        description: "All information necessary for apparel design can be configured in text, technical drawing, and image forms. Adjust the layout to enhance communication so that the client and factory can accurately understand it.",
+        dotColor: "yellow",
+        imageUrl: "https://res.cloudinary.com/dsg01xpat/image/upload/v1764744193/%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%8C%E1%85%B5%E1%84%89%E1%85%B5%E1%84%89%E1%85%A5_jqtoxj.png",
+        layout: "image-right",
       },
       {
-        title: "Version control & comments",
-        description: "Record style change history and comments as a timeline.",
-      },
-      {
-        title: "File & pattern viewer",
-        description:
-          "Structure to link related materials such as patterns and sample photos.",
+        id: "pattern-cad",
+        title: "Apparel Pattern",
+        subtitle: "Apparel Pattern Preview Function",
+        description: "2D/3D pattern files such as DXF, EMF can be checked directly without a separate CAD program. Quickly review pattern pieces and construction structures with real-time preview.",
+        dotColor: "blue",
+        imageUrl: "https://res.cloudinary.com/dsg01xpat/image/upload/v1764744192/%E1%84%8C%E1%85%A5%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%AA%E1%86%AB%E1%84%85%E1%85%AD_fpv6m9.png",
+        layout: "image-left",
       },
     ],
+    cta: {
+      title: "Based on the created work instruction, inquire about apparel production processes immediately.",
+      actionText: "Inquire about apparel production",
+      subtitle: "We provide reasonable production prices, both domestic and international, depending on the production scale.",
+    },
   },
   howItWorks: {
     title: "How faddit works",
@@ -201,6 +243,34 @@ export const en = {
     submitting: "Submitting...",
     success: "Your inquiry has been sent successfully.",
     error: "An error occurred while sending. Please try again.",
+  },
+  register: {
+    banner: "Register now to receive free templates",
+    headline: "Register now and",
+    headline2: "Get 42 free technical drawings/patterns!",
+    subtitle1: "A new way to connect the flow of clothing production, from planning to patterns.",
+    subtitle2: "Get essential technical drawing and pattern templates for clothing production for free and start now!",
+    form: {
+      name: "Name",
+      namePlaceholder: "Please enter your name",
+      contact: "Contact",
+      contactPlaceholder: "Please enter your contact number ex) 01012345677",
+      email: "Email",
+      emailPlaceholder: "Please enter your email",
+      company: "Company (Optional)",
+      companyPlaceholder: "Please enter your company name",
+      privacyTitle: "Privacy Policy and Consent",
+      privacyText1: "faddit ('Company') collects and uses personal information as follows in accordance with relevant laws.",
+      privacyText2: "1. Purpose of collection: Consultation for service provision, sending advertising information and event notices",
+      privacyText3: "2. Items collected: Name, affiliated company, mobile phone number, email",
+      privacyText4: "3. Retention period: Personal information is retained for 6 months from the time of collection and then promptly destroyed",
+      privacyText5: "4. Personal information management inquiry: seok@faddit.co.kr",
+      agree: "I agree to the collection and use of personal information.",
+      submit: "Submit",
+      submitting: "Submitting...",
+      success: "Registration completed successfully.",
+      error: "An error occurred during registration. Please try again.",
+    },
   },
 } as const;
 

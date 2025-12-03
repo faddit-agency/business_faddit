@@ -56,7 +56,7 @@ export function Contact() {
     <section
       id="contact"
       ref={ref}
-      className={`container mx-auto max-w-5xl px-4 py-20 transition-all duration-700 ${
+      className={`container mx-auto max-w-7xl px-4 py-20 transition-all duration-700 ${
         isInView
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
