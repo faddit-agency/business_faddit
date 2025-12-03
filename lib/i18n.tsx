@@ -5,7 +5,7 @@ import { ko } from "@/locales/ko";
 import { en } from "@/locales/en";
 
 type Locale = "ko" | "en";
-type Translations = typeof ko;
+type Translations = typeof ko | typeof en;
 
 interface I18nContextType {
   locale: Locale;
@@ -35,7 +35,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = newLocale;
   };
 
-  const translations: Translations = locale === "ko" ? ko : en;
+  const translations = (locale === "ko" ? ko : en) as Translations;
 
   return (
     <I18nContext.Provider value={{ locale, setLocale, t: translations }}>
