@@ -4,9 +4,11 @@ import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useInView } from "@/lib/use-in-view";
 
 export function Pricing() {
   const { t } = useI18n();
+  const { ref, isInView } = useInView();
 
   const scrollToContact = () => {
     const element = document.getElementById("contact");
@@ -16,7 +18,15 @@ export function Pricing() {
   };
 
   return (
-    <section id="pricing" className="container mx-auto max-w-5xl px-4 py-20">
+    <section
+      id="pricing"
+      ref={ref}
+      className={`container mx-auto max-w-5xl px-4 py-20 transition-all duration-700 ${
+        isInView
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+      }`}
+    >
       <div className="space-y-12">
         <div className="text-center space-y-4">
           <h2 className="text-3xl font-bold md:text-4xl">{t.pricing.title}</h2>

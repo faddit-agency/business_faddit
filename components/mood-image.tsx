@@ -1,12 +1,21 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n";
+import { useInView } from "@/lib/use-in-view";
 
 export function MoodImage() {
   const { t } = useI18n();
+  const { ref, isInView } = useInView();
 
   return (
-    <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+    <section
+      ref={ref}
+      className={`relative w-full h-[400px] md:h-[500px] overflow-hidden transition-all duration-700 ${
+        isInView
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+      }`}
+    >
       {/* Background Image Placeholder */}
       <div className="absolute inset-0 bg-gradient-to-br from-muted via-muted/80 to-muted/60">
         {/* Pattern overlay for texture */}

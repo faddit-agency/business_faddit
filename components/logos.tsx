@@ -1,9 +1,11 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n";
+import { useInView } from "@/lib/use-in-view";
 
 export function Logos() {
   const { t } = useI18n();
+  const { ref, isInView } = useInView();
 
   const placeholderBrands = [
     "BRAND A",
@@ -15,7 +17,14 @@ export function Logos() {
   ];
 
   return (
-    <section className="border-y bg-muted/30">
+    <section
+      ref={ref}
+      className={`border-y bg-muted/30 transition-all duration-700 ${
+        isInView
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+      }`}
+    >
       <div className="container mx-auto max-w-5xl px-4 py-12">
         <div className="space-y-8">
           <p className="text-center text-sm text-muted-foreground">

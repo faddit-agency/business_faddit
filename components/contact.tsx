@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useInView } from "@/lib/use-in-view";
 
 export function Contact() {
   const { t } = useI18n();
+  const { ref, isInView } = useInView();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -51,7 +53,15 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="container mx-auto max-w-5xl px-4 py-20">
+    <section
+      id="contact"
+      ref={ref}
+      className={`container mx-auto max-w-5xl px-4 py-20 transition-all duration-700 ${
+        isInView
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8"
+      }`}
+    >
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
           <CardTitle className="text-3xl">{t.contact.title}</CardTitle>
