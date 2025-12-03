@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 
@@ -54,80 +55,18 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right: UI Mockup */}
+        {/* Right: Hero GIF */}
         <div className="relative">
           <div className="rounded-lg border bg-card shadow-lg overflow-hidden">
-            {/* Browser Frame */}
-            <div className="border-b bg-muted/50 px-4 py-3 flex items-center gap-2">
-              <div className="flex gap-1.5">
-                <div className="h-3 w-3 rounded-full bg-red-500/50"></div>
-                <div className="h-3 w-3 rounded-full bg-yellow-500/50"></div>
-                <div className="h-3 w-3 rounded-full bg-green-500/50"></div>
-              </div>
-              <div className="flex-1 mx-4 h-6 bg-background rounded text-xs text-center flex items-center justify-center text-muted-foreground">
-                faddit.app/projects
-              </div>
-            </div>
-
-            {/* Mock UI Content */}
-            <div className="p-6 bg-background min-h-[400px]">
-              <div className="flex gap-6">
-                {/* Sidebar */}
-                <div className="w-48 space-y-4 hidden sm:block">
-                  <div className="space-y-2">
-                    <div className="h-4 bg-muted rounded w-24"></div>
-                    <div className="space-y-1 pl-4">
-                      <div className="h-3 bg-muted/50 rounded w-20"></div>
-                      <div className="h-3 bg-muted/50 rounded w-16"></div>
-                      <div className="h-3 bg-muted/50 rounded w-20"></div>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-muted rounded w-20"></div>
-                    <div className="space-y-1 pl-4">
-                      <div className="h-3 bg-muted/50 rounded w-24"></div>
-                      <div className="h-3 bg-muted/50 rounded w-18"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Main Content */}
-                <div className="flex-1 space-y-6">
-                  {/* Header */}
-                  <div>
-                    <div className="h-8 bg-muted rounded w-32 mb-3"></div>
-                    <div className="h-4 bg-muted/50 rounded w-48"></div>
-                  </div>
-
-                  {/* Style Cards Grid */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div
-                        key={i}
-                        className="border rounded-lg p-4 space-y-3 bg-card"
-                      >
-                        <div className="aspect-square bg-muted rounded"></div>
-                        <div className="h-4 bg-muted/50 rounded w-20"></div>
-                        <div className="h-3 bg-muted/30 rounded w-16"></div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Timeline */}
-                  <div className="space-y-2 pt-4 border-t">
-                    <div className="h-4 bg-muted rounded w-24 mb-4"></div>
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="flex gap-3">
-                        <div className="h-2 w-2 rounded-full bg-muted mt-2"></div>
-                        <div className="flex-1">
-                          <div className="h-3 bg-muted/50 rounded w-32 mb-1"></div>
-                          <div className="h-3 bg-muted/30 rounded w-48"></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <div className="relative w-full aspect-video">
+              <Image
+                src="https://res.cloudinary.com/dsg01xpat/image/upload/v1764743215/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB_%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8_2025-07-09_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_1.25.43_dkirx0.gif"
+                alt="faddit product demo"
+                fill
+                className="object-contain"
+                unoptimized
+                priority
+              />
             </div>
           </div>
         </div>
