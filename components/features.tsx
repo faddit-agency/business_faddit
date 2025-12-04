@@ -17,7 +17,7 @@ function FeatureItem({
   index: number; 
   getDotColorClass: (color: string) => string;
 }) {
-  const { ref: itemRef, isInView: itemInView } = useInView({
+  const { ref: itemRef, isInView: itemInView } = useInView<HTMLDivElement>({
     threshold: 0.2,
     triggerOnce: true,
   });
