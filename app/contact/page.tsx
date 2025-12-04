@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Mail, Phone, MapPin, ArrowRight, Phone as PhoneIcon } from "lucide-react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 export default function ContactPage() {
   const { t } = useI18n();
@@ -45,20 +46,39 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    // TODO: Supabase 연동
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // 임시 딜레이
-      setSubmitStatus("success");
-      setFormData({
-        name: "",
-        contact: "",
-        email: "",
-        company: "",
-        inquiryType: "",
-        inquiryDetails: "",
-        privacyAgree: false,
-      });
+      const { data, error } = await supabase
+        .from("inquiries")
+        .insert([
+          {
+            name: formData.name,
+            contact: formData.contact,
+            email: formData.email,
+            company: formData.company || null,
+            inquiry_type: formData.inquiryType,
+            inquiry_details: formData.inquiryDetails,
+            created_at: new Date().toISOString(),
+          },
+        ])
+        .select();
+
+      if (error) {
+        console.error("Supabase error:", error);
+        setSubmitStatus("error");
+      } else {
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          contact: "",
+          email: "",
+          company: "",
+          inquiryType: "",
+          inquiryDetails: "",
+          privacyAgree: false,
+        });
+      }
     } catch (error) {
+      console.error("Error submitting form:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
