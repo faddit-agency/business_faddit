@@ -3,7 +3,7 @@ export const ko = {
     logo: "faddit",
     nav: {
       product: "Product",
-      howItWorks: "How it works",
+      howItWorks: "Works",
       pricing: "Pricing",
       contact: "Contact",
     },

@@ -44,14 +44,14 @@ export function Footer() {
             <p>{t.footer.contact}</p>
             <div className="flex gap-4 mt-4">
               <Link
-                href="#"
+                href="/privacy"
                 className="underline hover:no-underline transition-all"
               >
                 {t.footer.privacy}
               </Link>
               <span>|</span>
               <Link
-                href="#"
+                href="/terms"
                 className="underline hover:no-underline transition-all"
               >
                 {t.footer.terms}

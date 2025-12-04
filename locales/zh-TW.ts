@@ -3,7 +3,7 @@ export const zhTW = {
     logo: "faddit",
     nav: {
       product: "Product",
-      howItWorks: "How it works",
+      howItWorks: "Works",
       pricing: "Pricing",
       contact: "Contact",
     },
