@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useInView } from "@/lib/use-in-view";
+import { supabase } from "@/lib/supabase";
 
 export function Contact() {
   const { t } = useI18n();
@@ -26,21 +27,24 @@ export function Contact() {
     setSubmitStatus("idle");
 
     try {
-      // TODO: Supabase insert 구현
-      // const { data, error } = await supabase
-      //   .from('inquiries')
-      //   .insert([
-      //     {
-      //       name: formData.name,
-      //       email: formData.email,
-      //       company: formData.company,
-      //       message: formData.message,
-      //       created_at: new Date().toISOString(),
-      //     }
-      //   ]);
+      const { data, error } = await supabase
+        .from('inquiries')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            company: formData.company || null,
+            inquiry_type: 'general',
+            inquiry_details: formData.message,
+          }
+        ])
+        .select();
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (error) {
+        console.error('Supabase error:', error);
+        setSubmitStatus("error");
+        return;
+      }
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", company: "", message: "" });

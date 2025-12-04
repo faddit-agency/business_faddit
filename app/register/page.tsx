@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Zap, ArrowRight } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 export default function RegisterPage() {
   const { t, locale } = useI18n();
@@ -34,21 +35,45 @@ export default function RegisterPage() {
     setSubmitStatus("idle");
 
     try {
-      // TODO: Supabase insert 구현
-      // const { data, error } = await supabase
-      //   .from('registrations')
-      //   .insert([
-      //     {
-      //       name: formData.name,
-      //       contact: formData.contact,
-      //       email: formData.email,
-      //       company: formData.company,
-      //       created_at: new Date().toISOString(),
-      //     }
-      //   ]);
+      // registrations 테이블이 있으면 사용, 없으면 inquiries 테이블에 저장
+      const { data, error } = await supabase
+        .from('registrations')
+        .insert([
+          {
+            name: formData.name,
+            contact: formData.contact,
+            email: formData.email,
+            company: formData.company || null,
+          }
+        ])
+        .select();
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // registrations 테이블이 없으면 inquiries 테이블에 저장
+      if (error && error.code === '42P01') {
+        const { data: fallbackData, error: fallbackError } = await supabase
+          .from('inquiries')
+          .insert([
+            {
+              name: formData.name,
+              contact: formData.contact,
+              email: formData.email,
+              company: formData.company || null,
+              inquiry_type: 'registration',
+              inquiry_details: '회원가입 신청',
+            }
+          ])
+          .select();
+
+        if (fallbackError) {
+          console.error('Supabase error:', fallbackError);
+          setSubmitStatus("error");
+          return;
+        }
+      } else if (error) {
+        console.error('Supabase error:', error);
+        setSubmitStatus("error");
+        return;
+      }
 
       setSubmitStatus("success");
       setFormData({ name: "", contact: "", email: "", company: "" });
