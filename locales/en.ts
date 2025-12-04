@@ -187,7 +187,8 @@ export const en = {
     ],
   },
   moodImage: {
-    text: "Where craftsmanship meets data, better collections are born.",
+    text: "Where craftsmanship meets data,",
+    text2: "better collections are born.",
   },
   pricing: {
     title: "Start freely with a plan that fits your scale and purpose.",

@@ -48,7 +48,7 @@ export function Header() {
             alt="faddit"
             width={248}
             height={55}
-            className="h-5 sm:h-6 md:h-7 w-auto object-contain"
+            className="h-4 sm:h-5 md:h-6 w-auto object-contain"
             priority
           />
         </Link>
@@ -135,72 +135,96 @@ export function Header() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
-              <SheetHeader>
-                <SheetTitle>{t.header.logo}</SheetTitle>
+            <SheetContent side="right" className="w-[66%] sm:w-[400px] p-0 flex flex-col">
+              <SheetHeader className="px-6 pt-6 pb-4 border-b">
+                <div className="flex items-center justify-between">
+                  <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                    <Image
+                      src="https://res.cloudinary.com/dsg01xpat/image/upload/v1764743399/black_e3hznn.svg"
+                      alt="faddit"
+                      width={120}
+                      height={27}
+                      className="h-5 w-auto object-contain"
+                    />
+                  </Link>
+                </div>
               </SheetHeader>
-              <nav className="mt-8 flex flex-col gap-4">
+              <nav className="flex-1 flex flex-col px-6 py-8 gap-6">
                 <button
                   onClick={() => scrollToSection("product")}
-                  className="text-left text-lg font-medium"
+                  className="text-left text-base font-medium text-foreground hover:text-foreground/80 transition-colors"
                 >
                   {t.header.nav.product}
                 </button>
                 <button
                   onClick={() => scrollToSection("how-it-works")}
-                  className="text-left text-lg font-medium"
+                  className="text-left text-base font-medium text-foreground hover:text-foreground/80 transition-colors"
                 >
                   {t.header.nav.howItWorks}
                 </button>
                 <button
                   onClick={() => scrollToSection("pricing")}
-                  className="text-left text-lg font-medium"
+                  className="text-left text-base font-medium text-foreground hover:text-foreground/80 transition-colors"
                 >
                   {t.header.nav.pricing}
                 </button>
                 <Link
                   href="/contact"
-                  className="text-left text-lg font-medium"
+                  className="text-left text-base font-medium text-foreground hover:text-foreground/80 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.header.nav.contact}
                 </Link>
-                        {/* Language Toggle in Mobile */}
-                        <div className="flex gap-2 pt-4 border-t">
-                          <Button
-                            variant={locale === "ko" ? "default" : "outline"}
-                            size="sm"
-                            onClick={() => setLocale("ko")}
-                            className="flex-1"
-                          >
-                            한국어
-                          </Button>
-                          <Button
-                            variant={locale === "en" ? "default" : "outline"}
-                            size="sm"
-                            onClick={() => setLocale("en")}
-                            className="flex-1"
-                          >
-                            EN
-                          </Button>
-                          <Button
-                            variant={locale === "zh-TW" ? "default" : "outline"}
-                            size="sm"
-                            onClick={() => setLocale("zh-TW")}
-                            className="flex-1"
-                          >
-                            繁體中文
-                          </Button>
-                        </div>
+                
+                {/* Language Toggle in Mobile */}
+                <div className="flex gap-2 pt-6 mt-auto">
+                  <Button
+                    variant={locale === "ko" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setLocale("ko")}
+                    className={`flex-1 rounded-md ${
+                      locale === "ko" 
+                        ? "bg-[#333333] text-white hover:bg-[#333333]/90" 
+                        : "bg-white border border-gray-200 text-foreground hover:bg-gray-50"
+                    }`}
+                  >
+                    한국어
+                  </Button>
+                  <Button
+                    variant={locale === "en" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setLocale("en")}
+                    className={`flex-1 rounded-md ${
+                      locale === "en" 
+                        ? "bg-[#333333] text-white hover:bg-[#333333]/90" 
+                        : "bg-white border border-gray-200 text-foreground hover:bg-gray-50"
+                    }`}
+                  >
+                    EN
+                  </Button>
+                  <Button
+                    variant={locale === "zh-TW" ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setLocale("zh-TW")}
+                    className={`flex-1 rounded-md ${
+                      locale === "zh-TW" 
+                        ? "bg-[#333333] text-white hover:bg-[#333333]/90" 
+                        : "bg-white border border-gray-200 text-foreground hover:bg-gray-50"
+                    }`}
+                  >
+                    繁體中文
+                  </Button>
+                </div>
+                
                 {/* Get Started Button in Mobile */}
                 <Link
                   href="https://faddit.co.kr/sign/in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full"
+                  className="w-full pb-6"
                 >
                   <Button
-                    className="w-full h-12 rounded-full text-white transition-colors gap-2 btn-black"
+                    className="w-full h-12 rounded-md text-white transition-colors gap-2 bg-[#333333] hover:bg-[#333333]/90"
                   >
                     <span className="text-sm font-medium">
                       {locale === "ko" ? "시작하기" : "Get Started"}
