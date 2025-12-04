@@ -1,11 +1,46 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 import { useInView } from "@/lib/use-in-view";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+function VideoPlayer({ src }: { src: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { ref, isInView } = useInView({
+    threshold: 0.3,
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isInView) {
+      video.play().catch((error) => {
+        console.log("Video play failed:", error);
+      });
+    } else {
+      video.pause();
+    }
+  }, [isInView]);
+
+  return (
+    <div ref={ref} className="absolute inset-0 w-full h-full">
+      <video
+        ref={videoRef}
+        src={src}
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-contain"
+      />
+    </div>
+  );
+}
 
 export function Features() {
   const { t } = useI18n();
@@ -62,13 +97,17 @@ export function Features() {
               <div className="rounded-lg bg-gray-100 pt-6 px-6 overflow-hidden">
                 <div className="relative w-full aspect-video bg-white rounded">
                   {feature.imageUrl ? (
-                    <Image
-                      src={feature.imageUrl}
-                      alt={feature.title}
-                      fill
-                      className="object-contain"
-                      unoptimized
-                    />
+                    feature.imageUrl.endsWith('.mp4') || feature.imageUrl.includes('/video/upload/') ? (
+                      <VideoPlayer src={feature.imageUrl} />
+                    ) : (
+                      <Image
+                        src={feature.imageUrl}
+                        alt={feature.title}
+                        fill
+                        className="object-contain"
+                        unoptimized
+                      />
+                    )
                   ) : (
                     <div className="p-6 bg-white min-h-[300px] flex items-center justify-center text-muted-foreground rounded">
                       Image placeholder
@@ -100,33 +139,6 @@ export function Features() {
           </div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        {t.features.cta && (
-          <div className="text-center space-y-6 pt-12 border-t">
-            <p className="text-xl text-foreground leading-relaxed max-w-3xl mx-auto">
-              {t.features.cta.title}
-            </p>
-            <div className="flex items-center justify-center gap-2 flex-wrap">
-              <span className="text-base text-foreground">for delivering</span>
-              <Link href="#contact">
-                <Button
-                  variant="outline"
-                  className="rounded-full px-6 py-2 border-[#181818] text-foreground hover:bg-[#181818] hover:text-white transition-colors"
-                >
-                  <span className="text-base">{t.features.cta.actionText}</span>
-                  <div className="ml-2 w-6 h-6 rounded-full bg-[#181818] flex items-center justify-center">
-                    <ArrowRight className="h-3 w-3 text-white" />
-                  </div>
-                </Button>
-              </Link>
-              <span className="text-base text-foreground">smarter solutions</span>
-            </div>
-            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-              {t.features.cta.subtitle}
-            </p>
-          </div>
-        )}
       </div>
     </section>
   );

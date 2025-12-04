@@ -6,8 +6,8 @@ import { Features } from "@/components/features";
 import { HowItWorks } from "@/components/how-it-works";
 import { MoodImage } from "@/components/mood-image";
 import { Pricing } from "@/components/pricing";
-import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 export default function Home() {
   return (
@@ -21,9 +21,9 @@ export default function Home() {
         <HowItWorks />
         <MoodImage />
         <Pricing />
-        <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

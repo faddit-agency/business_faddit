@@ -28,7 +28,7 @@ export function Solution() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {t.solution.values.map((value, index) => (
-            <Card key={index} className="h-full bg-[#181818] text-white border-[#181818]">
+            <Card key={index} className="h-full bg-[#333333] text-white border-[#333333]">
               <CardHeader>
                 <CardTitle className="text-xl text-white">{value.title}</CardTitle>
               </CardHeader>

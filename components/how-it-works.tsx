@@ -3,78 +3,82 @@
 import { useI18n } from "@/lib/i18n";
 import { Card, CardContent } from "@/components/ui/card";
 import { useInView } from "@/lib/use-in-view";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Layers, Lock, Clock, Settings } from "lucide-react";
 
 export function HowItWorks() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const { ref, isInView } = useInView();
+
+  const icons = [
+    <Layers key="layers" className="w-6 h-6" />,
+    <Lock key="lock" className="w-6 h-6" />,
+    <Clock key="clock" className="w-6 h-6" />,
+    <Settings key="settings" className="w-6 h-6" />,
+  ];
+
+  const cardColors = [
+    "bg-[#333333]",  // 검은색 - 첫 번째
+    "bg-[#333333]",  // 검은색 - 두 번째
+    "bg-[#333333]",  // 검은색 - 세 번째
+    "bg-[#333333]",  // 검은색 - 네 번째
+  ];
+
+  const textColors = [
+    "text-white", // 첫 번째: 흰색 텍스트
+    "text-white", // 두 번째: 흰색 텍스트
+    "text-white", // 세 번째: 흰색 텍스트
+    "text-white", // 네 번째: 흰색 텍스트
+  ];
 
   return (
     <section
       id="how-it-works"
       ref={ref}
-      className={`container mx-auto max-w-7xl px-4 py-20 transition-all duration-700 ${
+      className={`bg-white container mx-auto max-w-7xl px-4 py-20 transition-all duration-700 ${
         isInView
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
       }`}
     >
       <div className="space-y-16">
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            {t.howItWorks.title}
+        {/* Top Section: Title and Button */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <h2 className="text-4xl font-bold md:text-5xl text-left max-w-3xl leading-tight">
+            {locale === "ko" ? (
+              <>
+                {t.howItWorks.title.split("바로")[0]}
+                <br />
+                바로{t.howItWorks.title.split("바로")[1]}
+              </>
+            ) : (
+              t.howItWorks.title
+            )}
           </h2>
+          <Button className="bg-[#333333] text-white hover:bg-[#333333]/90 rounded-lg px-6 py-2 flex items-center gap-2">
+            <span>{t.howItWorks.buttonText}</span>
+            <ArrowRight className="w-5 h-5 text-white" />
+          </Button>
         </div>
 
-        {/* Desktop: Horizontal Timeline */}
-        <div className="hidden md:block">
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute top-12 left-0 right-0 h-0.5 bg-border"></div>
-
-            {/* Steps */}
-            <div className="relative grid grid-cols-4 gap-4">
-              {t.howItWorks.steps.map((step, index) => (
-                <div key={index} className="relative">
-                  <Card className="h-full bg-[#181818] text-white border-[#181818]">
-                    <CardContent className="p-6 space-y-4">
-                      <div className="flex items-center gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white text-[#181818] flex items-center justify-center font-bold text-lg relative z-10">
-                          {step.step}
-                        </div>
-                        <h3 className="text-xl font-semibold text-white">{step.title}</h3>
-                      </div>
-                      <p className="text-slate-300 leading-relaxed">
-                        {step.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile: Vertical Timeline */}
-        <div className="md:hidden space-y-6">
+        {/* 4 Cards in a Single Row */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {t.howItWorks.steps.map((step, index) => (
-            <div key={index} className="flex gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-foreground text-background flex items-center justify-center font-bold text-lg">
-                  {step.step}
-                </div>
-                {index < t.howItWorks.steps.length - 1 && (
-                  <div className="w-0.5 h-full bg-border mx-auto mt-2 min-h-[60px]"></div>
+            <Card
+              key={index}
+              className={`${cardColors[index]} border border-gray-700 rounded-lg shadow-none`}
+            >
+              <CardContent className="p-8 space-y-4">
+                <div className={textColors[index]}>{icons[index]}</div>
+                <h3 className={`text-2xl font-bold ${textColors[index]}`}>{step.title}</h3>
+                {step.subtitle && (
+                  <p className={`text-base ${textColors[index]}`}>{step.subtitle}</p>
                 )}
-              </div>
-              <Card className="flex-1 bg-[#181818] text-white border-[#181818]">
-                <CardContent className="p-6 space-y-2">
-                  <h3 className="text-xl font-semibold text-white">{step.title}</h3>
-                  <p className="text-slate-300 leading-relaxed">
-                    {step.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+                <p className={`text-base ${textColors[index]} leading-relaxed`}>
+                  {step.description}
+                </p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

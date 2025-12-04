@@ -46,19 +46,19 @@
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: #181818;
+  --foreground: #333333;
   --card: oklch(1 0 0);
-  --card-foreground: #181818;
+  --card-foreground: #333333;
   --popover: oklch(1 0 0);
-  --popover-foreground: #181818;
-  --primary: #181818;
+  --popover-foreground: #333333;
+  --primary: #333333;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
-  --secondary-foreground: #181818;
+  --secondary-foreground: #333333;
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
-  --accent-foreground: #181818;
+  --accent-foreground: #333333;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
@@ -69,11 +69,11 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: #181818;
-  --sidebar-primary: #181818;
+  --sidebar-foreground: #333333;
+  --sidebar-primary: #333333;
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: #181818;
+  --sidebar-accent-foreground: #333333;
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
@@ -141,9 +141,25 @@
 
 /* Custom black button style */
 .btn-black {
-  background-color: #181818;
+  background-color: #333333;
 }
 
 .btn-black:hover {
   background-color: rgba(24, 24, 24, 0.9);
+}
+
+/* Infinite scroll animation for logos */
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite 80s linear infinite;
+  display: flex;
+  width: fit-content;
 }

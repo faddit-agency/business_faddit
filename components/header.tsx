@@ -73,12 +73,12 @@ export function Header() {
           >
             {t.header.nav.pricing}
           </button>
-          <button
-            onClick={() => scrollToSection("contact")}
+          <Link
+            href="/contact"
             className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.contact}
-          </button>
+          </Link>
         </nav>
 
         {/* Language Toggle & CTA Button */}
@@ -158,12 +158,13 @@ export function Header() {
                 >
                   {t.header.nav.pricing}
                 </button>
-                <button
-                  onClick={() => scrollToSection("contact")}
+                <Link
+                  href="/contact"
                   className="text-left text-lg font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.header.nav.contact}
-                </button>
+                </Link>
                         {/* Language Toggle in Mobile */}
                         <div className="flex gap-2 pt-4 border-t">
                           <Button

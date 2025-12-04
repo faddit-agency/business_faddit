@@ -68,7 +68,7 @@ export default function RegisterPage() {
         <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
           {/* Banner */}
           <div className="mb-8 flex justify-end">
-            <div className="bg-[#181818] text-white px-4 py-2 rounded-lg flex items-center gap-3">
+            <div className="bg-[#333333] text-white px-4 py-2 rounded-lg flex items-center gap-3">
               <div className="flex gap-1">
                 <div className="w-6 h-6 rounded-full bg-white/20"></div>
                 <div className="w-6 h-6 rounded-full bg-white/20"></div>
@@ -206,7 +206,7 @@ export default function RegisterPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-[#181818] text-white hover:bg-[#181818]/90"
+                  className="w-full bg-[#333333] text-white hover:bg-[#333333]/90"
                   disabled={isSubmitting || !agreeToPrivacy}
                 >
                   {isSubmitting ? t.register.form.submitting : t.register.form.submit}
