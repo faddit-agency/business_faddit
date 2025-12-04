@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 
 function VideoPlayer({ src }: { src: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { ref, isInView } = useInView({
+  const { ref, isInView } = useInView<HTMLDivElement>({
     threshold: 0.3,
     triggerOnce: false,
   });

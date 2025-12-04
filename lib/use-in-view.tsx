@@ -6,9 +6,9 @@ interface UseInViewOptions extends IntersectionObserverInit {
   triggerOnce?: boolean;
 }
 
-export function useInView(options?: UseInViewOptions) {
+export function useInView<T extends HTMLElement = HTMLElement>(options?: UseInViewOptions) {
   const [isInView, setIsInView] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
   const { triggerOnce = true, ...observerOptions } = options || {};
 
   useEffect(() => {
