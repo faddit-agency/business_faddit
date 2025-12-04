@@ -68,7 +68,7 @@ export function Pricing() {
         {/* Pricing Cards */}
         <div className="grid gap-6 md:grid-cols-4">
           {t.pricing.plans.map((plan, index) => {
-            const displayPrice = plan.priceCustom
+            const displayPrice = "priceCustom" in plan && plan.priceCustom
               ? plan.priceCustom
               : isYearly
               ? formatPrice(plan.priceYearly)
@@ -99,7 +99,7 @@ export function Pricing() {
                     <p className="text-base text-gray-300 mt-1">({plan.targetUser})</p>
                   )}
                   <div className="mt-4">
-                    {plan.priceCustom ? (
+                    {"priceCustom" in plan && plan.priceCustom ? (
                       <p className="text-3xl font-bold text-white">{displayPrice}</p>
                     ) : (
                       <>
