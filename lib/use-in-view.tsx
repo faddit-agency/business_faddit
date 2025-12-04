@@ -2,9 +2,14 @@
 
 import { useEffect, useRef, useState, RefObject } from "react";
 
-export function useInView(options?: IntersectionObserverInit) {
+interface UseInViewOptions extends IntersectionObserverInit {
+  triggerOnce?: boolean;
+}
+
+export function useInView(options?: UseInViewOptions) {
   const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const { triggerOnce = true, ...observerOptions } = options || {};
 
   useEffect(() => {
     const element = ref.current;
@@ -14,14 +19,18 @@ export function useInView(options?: IntersectionObserverInit) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          // 한 번만 트리거되도록 옵저버 해제
-          observer.unobserve(element);
+          // triggerOnce가 true이면 한 번만 트리거되도록 옵저버 해제
+          if (triggerOnce) {
+            observer.unobserve(element);
+          }
+        } else if (!triggerOnce) {
+          setIsInView(false);
         }
       },
       {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
-        ...options,
+        ...observerOptions,
       }
     );
 
@@ -32,7 +41,8 @@ export function useInView(options?: IntersectionObserverInit) {
         observer.unobserve(element);
       }
     };
-  }, [options]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [triggerOnce, options?.threshold, options?.rootMargin]);
 
   return { ref, isInView };
 }
