@@ -5,7 +5,7 @@ export const ko = {
       product: "Product",
       howItWorks: "Works",
       pricing: "Pricing",
-      contact: "Contact",
+      contact: "문의하기",
     },
   },
   hero: {

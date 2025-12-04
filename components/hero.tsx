@@ -134,8 +134,24 @@ export function Hero() {
   };
 
   return (
-    <section className="pt-8 sm:pt-12 md:pt-20 pb-8 sm:pb-12 md:pb-20">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+    <section className="pt-8 sm:pt-12 md:pt-20 pb-8 sm:pb-12 md:pb-20 relative overflow-hidden">
+      {/* Background Graphic - Very faint gradient circles */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="relative w-full max-w-4xl h-full opacity-[0.15]">
+          {/* Concentric Gradient Circles */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] lg:w-[1000px] lg:h-[1000px] rounded-full" style={{
+            background: 'radial-gradient(circle, rgba(100, 100, 100, 0.3) 0%, rgba(120, 120, 120, 0.25) 20%, rgba(140, 140, 140, 0.2) 40%, rgba(160, 160, 160, 0.15) 60%, rgba(180, 180, 180, 0.1) 80%, transparent 100%)',
+          }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] lg:w-[900px] lg:h-[900px] rounded-full" style={{
+            background: 'radial-gradient(circle, rgba(100, 100, 100, 0.4) 0%, rgba(120, 120, 120, 0.3) 30%, rgba(160, 160, 160, 0.2) 60%, transparent 100%)',
+          }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full" style={{
+            background: 'radial-gradient(circle, rgba(100, 100, 100, 0.5) 0%, rgba(120, 120, 120, 0.4) 50%, transparent 100%)',
+          }}></div>
+        </div>
+      </div>
+      
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         <div className="flex flex-col gap-8">
           {/* Text Section */}
           <div

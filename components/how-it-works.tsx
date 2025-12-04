@@ -55,30 +55,42 @@ export function HowItWorks() {
               t.howItWorks.title
             )}
           </h2>
-          <Button className="bg-[#333333] text-white hover:bg-[#333333]/90 rounded-lg px-4 sm:px-6 py-2 flex items-center gap-2 w-full md:w-auto justify-center">
-            <span className="text-sm sm:text-base">{t.howItWorks.buttonText}</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+          <Button className="bg-transparent hover:bg-transparent p-0 h-auto flex items-center gap-2 w-full md:w-auto justify-center">
+            <span className="text-sm sm:text-base text-[#333333] underline">{t.howItWorks.buttonText}</span>
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#333333]" />
           </Button>
         </div>
 
-        {/* 4 Cards in a Single Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* 4 Cards in a Single Row with Arrows */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           {t.howItWorks.steps.map((step, index) => (
-            <Card
-              key={index}
-              className={`${cardColors[index]} border border-gray-700 rounded-lg shadow-none`}
-            >
-              <CardContent className="p-6 sm:p-8 space-y-3 sm:space-y-4">
-                <div className={textColors[index]}>{icons[index]}</div>
-                <h3 className={`text-xl sm:text-2xl font-bold ${textColors[index]}`}>{step.title}</h3>
-                {step.subtitle && (
-                  <p className={`text-sm sm:text-base ${textColors[index]}`}>{step.subtitle}</p>
-                )}
-                <p className={`text-sm sm:text-base ${textColors[index]} leading-relaxed`}>
-                  {step.description}
-                </p>
-              </CardContent>
-            </Card>
+            <>
+              <Card
+                key={index}
+                className={`${cardColors[index]} border border-gray-700 rounded-lg shadow-none flex-1`}
+              >
+                <CardContent className="p-6 sm:p-8 space-y-3 sm:space-y-4">
+                  <div className="w-fit">
+                    <div className="bg-white rounded-lg p-3 w-fit">
+                      <div className="text-[#333333]">{icons[index]}</div>
+                    </div>
+                  </div>
+                  <h3 className={`text-xl sm:text-2xl font-bold ${textColors[index]}`}>{step.title}</h3>
+                  {step.subtitle && (
+                    <p className={`text-sm sm:text-base ${textColors[index]}`}>{step.subtitle}</p>
+                  )}
+                  <p className={`text-sm sm:text-base ${textColors[index]} leading-relaxed`}>
+                    {step.description}
+                  </p>
+                </CardContent>
+              </Card>
+              {index < t.howItWorks.steps.length - 1 && (
+                <ArrowRight 
+                  key={`arrow-${index}`}
+                  className="w-6 h-6 sm:w-8 sm:h-8 text-[#333333] flex-shrink-0 hidden sm:block" 
+                />
+              )}
+            </>
           ))}
         </div>
       </div>
