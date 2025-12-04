@@ -48,7 +48,7 @@ export function Header() {
             alt="faddit"
             width={248}
             height={55}
-            className="h-4 sm:h-5 md:h-6 w-auto object-contain"
+            className="h-3 sm:h-4 md:h-5 w-auto object-contain"
             priority
           />
         </Link>
@@ -144,7 +144,7 @@ export function Header() {
                       alt="faddit"
                       width={120}
                       height={27}
-                      className="h-5 w-auto object-contain"
+                      className="h-4 w-auto object-contain"
                     />
                   </Link>
                 </div>
