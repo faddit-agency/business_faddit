@@ -35,16 +35,16 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       ref={ref}
-      className={`bg-white container mx-auto max-w-7xl px-4 py-20 transition-all duration-700 ${
+      className={`bg-white container mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 transition-all duration-700 ${
         isInView
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="space-y-16">
+      <div className="space-y-12 sm:space-y-16">
         {/* Top Section: Title and Button */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <h2 className="text-4xl font-bold md:text-5xl text-left max-w-3xl leading-tight">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left max-w-3xl leading-tight">
             {locale === "ko" ? (
               <>
                 {t.howItWorks.title.split("바로")[0]}
@@ -55,26 +55,26 @@ export function HowItWorks() {
               t.howItWorks.title
             )}
           </h2>
-          <Button className="bg-[#333333] text-white hover:bg-[#333333]/90 rounded-lg px-6 py-2 flex items-center gap-2">
-            <span>{t.howItWorks.buttonText}</span>
-            <ArrowRight className="w-5 h-5 text-white" />
+          <Button className="bg-[#333333] text-white hover:bg-[#333333]/90 rounded-lg px-4 sm:px-6 py-2 flex items-center gap-2 w-full md:w-auto justify-center">
+            <span className="text-sm sm:text-base">{t.howItWorks.buttonText}</span>
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </Button>
         </div>
 
         {/* 4 Cards in a Single Row */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {t.howItWorks.steps.map((step, index) => (
             <Card
               key={index}
               className={`${cardColors[index]} border border-gray-700 rounded-lg shadow-none`}
             >
-              <CardContent className="p-8 space-y-4">
+              <CardContent className="p-6 sm:p-8 space-y-3 sm:space-y-4">
                 <div className={textColors[index]}>{icons[index]}</div>
-                <h3 className={`text-2xl font-bold ${textColors[index]}`}>{step.title}</h3>
+                <h3 className={`text-xl sm:text-2xl font-bold ${textColors[index]}`}>{step.title}</h3>
                 {step.subtitle && (
-                  <p className={`text-base ${textColors[index]}`}>{step.subtitle}</p>
+                  <p className={`text-sm sm:text-base ${textColors[index]}`}>{step.subtitle}</p>
                 )}
-                <p className={`text-base ${textColors[index]} leading-relaxed`}>
+                <p className={`text-sm sm:text-base ${textColors[index]} leading-relaxed`}>
                   {step.description}
                 </p>
               </CardContent>

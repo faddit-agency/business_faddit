@@ -52,10 +52,10 @@ export function Logos() {
         {/* 무한 루프 애니메이션 컨테이너 */}
         <div className="relative w-full overflow-hidden">
           {/* 왼쪽 블러 효과 */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none backdrop-blur-sm" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none backdrop-blur-sm" />
           
           {/* 오른쪽 블러 효과 */}
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none backdrop-blur-sm" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none backdrop-blur-sm" />
           
           {/* 스크롤 애니메이션 */}
           <div className="flex animate-scroll-infinite">
@@ -63,7 +63,7 @@ export function Logos() {
             {logoImages.map((logo, index) => (
               <div
                 key={`first-${index}`}
-                className="flex-shrink-0 mx-16 h-16 w-32 flex items-center justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                className="flex-shrink-0 mx-4 sm:mx-8 md:mx-12 lg:mx-16 h-12 sm:h-14 md:h-16 w-24 sm:w-28 md:w-32 flex items-center justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               >
                 <Image
                   src={logo}
@@ -80,7 +80,7 @@ export function Logos() {
             {logoImages.map((logo, index) => (
               <div
                 key={`second-${index}`}
-                className="flex-shrink-0 mx-16 h-16 w-32 flex items-center justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                className="flex-shrink-0 mx-4 sm:mx-8 md:mx-12 lg:mx-16 h-12 sm:h-14 md:h-16 w-24 sm:w-28 md:w-32 flex items-center justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
               >
                 <Image
                   src={logo}

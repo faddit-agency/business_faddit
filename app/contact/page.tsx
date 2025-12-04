@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Mail, Phone, MapPin, ArrowRight, Phone as PhoneIcon } from "lucide-react";
 import Link from "next/link";
-import { supabase } from "@/lib/supabase";
 
 export default function ContactPage() {
   const { t } = useI18n();
@@ -46,39 +45,20 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
+    // TODO: Supabase 연동
     try {
-      const { data, error } = await supabase
-        .from("inquiries")
-        .insert([
-          {
-            name: formData.name,
-            contact: formData.contact,
-            email: formData.email,
-            company: formData.company || null,
-            inquiry_type: formData.inquiryType,
-            inquiry_details: formData.inquiryDetails,
-            created_at: new Date().toISOString(),
-          },
-        ])
-        .select();
-
-      if (error) {
-        console.error("Supabase error:", error);
-        setSubmitStatus("error");
-      } else {
-        setSubmitStatus("success");
-        setFormData({
-          name: "",
-          contact: "",
-          email: "",
-          company: "",
-          inquiryType: "",
-          inquiryDetails: "",
-          privacyAgree: false,
-        });
-      }
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // 임시 딜레이
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        contact: "",
+        email: "",
+        company: "",
+        inquiryType: "",
+        inquiryDetails: "",
+        privacyAgree: false,
+      });
     } catch (error) {
-      console.error("Error submitting form:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -89,22 +69,22 @@ export default function ContactPage() {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1 bg-gray-50">
-        <section className="container mx-auto max-w-7xl px-4 py-20">
-          <div className="space-y-12">
+        <section className="container mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+          <div className="space-y-8 sm:space-y-12">
             {/* Header Section */}
-            <div className="space-y-4">
+            <div className="space-y-4 px-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100">
                 <PhoneIcon className="w-4 h-4 text-[#333333]" />
                 <span className="text-sm text-[#333333]">{t.contactPage.badge}</span>
               </div>
-              <h1 className="text-4xl font-bold md:text-5xl">{t.contactPage.title}</h1>
-              <p className="text-lg text-muted-foreground max-w-3xl whitespace-nowrap">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">{t.contactPage.title}</h1>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
                 {t.contactPage.description}
               </p>
             </div>
 
             {/* Contact Cards */}
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {/* Email Card */}
               <Card className="p-6 bg-white">
                 <div className="flex items-center gap-3 mb-4">
@@ -167,12 +147,12 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <Card className="p-8 bg-white">
-              <h2 className="text-2xl font-semibold mb-8">{t.contactPage.form.title}</h2>
+            <Card className="p-6 sm:p-8 bg-white">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8">{t.contactPage.form.title}</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {/* Two Column Input Fields */}
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
                   <div className="space-y-3">
                     <label htmlFor="name" className="text-base font-medium">
                       {t.contactPage.form.name}

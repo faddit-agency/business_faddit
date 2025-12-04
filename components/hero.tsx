@@ -134,8 +134,8 @@ export function Hero() {
   };
 
   return (
-    <section className="pt-12 md:pt-20 pb-12 md:pb-20">
-      <div className="container mx-auto max-w-7xl px-4">
+    <section className="pt-8 sm:pt-12 md:pt-20 pb-8 sm:pb-12 md:pb-20">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col gap-8">
           {/* Text Section */}
           <div
@@ -174,7 +174,7 @@ export function Hero() {
                 </div>
                 
                 <div className="text-center space-y-4">
-                  <h1 className="text-[68px] font-bold tracking-tight leading-tight">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-bold tracking-tight leading-tight px-4">
                     {locale === "ko" ? (
                       <>
                         누구나 시작할 수 있는
@@ -185,7 +185,7 @@ export function Hero() {
                       t.hero.headline
                     )}
                   </h1>
-                  <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto whitespace-pre-line">
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto whitespace-pre-line px-4">
                     {locale === "ko" ? (
                       <>
                         {t.hero.subheadline.split(/, /)[0]},

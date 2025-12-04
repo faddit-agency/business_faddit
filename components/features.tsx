@@ -65,36 +65,36 @@ export function Features() {
     <section
       id="product"
       ref={ref}
-      className={`container mx-auto max-w-7xl px-4 py-20 transition-all duration-700 ${
+      className={`container mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 transition-all duration-700 ${
         isInView
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="space-y-20">
+      <div className="space-y-12 sm:space-y-16 md:space-y-20">
         {/* Title Section */}
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl font-bold md:text-5xl">{t.features.title}</h2>
+        <div className="text-center space-y-4 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">{t.features.title}</h2>
           {t.features.subtitle && (
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
               {t.features.subtitle}
             </p>
           )}
         </div>
 
         {/* Feature Items */}
-        <div className="space-y-20">
+        <div className="space-y-12 sm:space-y-16 md:space-y-20">
           {t.features.items.map((feature, index) => (
             <div
               key={feature.id || index}
               id={`feature-${feature.id || index}`}
-              className={`flex flex-col gap-12 md:flex-row md:gap-16 items-center ${
+              className={`flex flex-col gap-8 sm:gap-10 md:flex-row md:gap-16 items-center ${
                 feature.layout === "image-right" ? "md:flex-row-reverse" : ""
               }`}
             >
             {/* Image Side */}
             <div className="flex-1 w-full">
-              <div className="rounded-lg bg-gray-100 pt-6 px-6 overflow-hidden">
+              <div className="rounded-lg bg-gray-100 pt-4 sm:pt-6 px-4 sm:px-6 overflow-hidden">
                 <div className="relative w-full aspect-video bg-white rounded">
                   {feature.imageUrl ? (
                     feature.imageUrl.endsWith('.mp4') || feature.imageUrl.includes('/video/upload/') ? (
@@ -118,21 +118,21 @@ export function Features() {
             </div>
 
             {/* Text Side */}
-            <div className="flex-1 space-y-4 text-left">
+            <div className="flex-1 space-y-4 text-left px-4">
               <div className="flex items-center gap-3">
-                <h3 className="text-base font-bold">{feature.title}</h3>
+                <h3 className="text-sm sm:text-base font-bold">{feature.title}</h3>
                 {feature.dotColor && (
                   <div className={`w-3 h-3 rounded-full ${getDotColorClass(feature.dotColor)}`}></div>
                 )}
               </div>
               
               {feature.subtitle && (
-                <p className="text-3xl font-semibold md:text-4xl text-foreground whitespace-pre-line">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground whitespace-pre-line">
                   {feature.subtitle}
                 </p>
               )}
               
-              <p className="text-base text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
             </div>

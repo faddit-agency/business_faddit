@@ -24,17 +24,17 @@ export function Pricing() {
     <section
       id="pricing"
       ref={ref}
-      className={`container mx-auto max-w-7xl px-4 py-20 transition-all duration-700 ${
+      className={`container mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 transition-all duration-700 ${
         isInView
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="space-y-12">
+      <div className="space-y-8 sm:space-y-12">
         {/* Title Section */}
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl font-bold md:text-5xl">{t.pricing.title}</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center space-y-4 px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">{t.pricing.title}</h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto">
             {t.pricing.subtitle}
           </p>
         </div>
@@ -66,7 +66,7 @@ export function Pricing() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid gap-6 md:grid-cols-4">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {t.pricing.plans.map((plan, index) => {
             const displayPrice = "priceCustom" in plan && plan.priceCustom
               ? plan.priceCustom

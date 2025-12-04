@@ -19,34 +19,34 @@ export function UserStories() {
       <section
         id="user-stories"
         ref={ref}
-        className={`container mx-auto max-w-7xl px-4 py-20 transition-all duration-700 ${
+        className={`container mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 md:py-20 transition-all duration-700 ${
           isInView
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           <div className="text-center space-y-4">
-            <h2 id="user-stories-title" className="text-[48px] font-bold">{t.userStories.title}</h2>
+            <h2 id="user-stories-title" className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold px-4">{t.userStories.title}</h2>
             {t.userStories.subtitle && (
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
                 {t.userStories.subtitle}
               </p>
             )}
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {t.userStories.testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="rounded-lg bg-[#333333] p-8 h-full flex flex-col justify-between"
+                className="rounded-lg bg-[#333333] p-6 sm:p-8 h-full flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                  <p className="text-white text-sm sm:text-base leading-relaxed whitespace-pre-line">
                     {testimonial.quote}
                   </p>
                 </div>
-                <div className="pt-6 mt-auto flex items-center gap-4">
+                <div className="pt-4 sm:pt-6 mt-auto flex items-center gap-3 sm:gap-4">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 rounded-full overflow-hidden">
                       <Image
@@ -60,10 +60,10 @@ export function UserStories() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-lg">
+                    <p className="text-white font-semibold text-base sm:text-lg">
                       {testimonial.name}
                     </p>
-                    <p className="text-slate-300 text-sm mt-1">
+                    <p className="text-slate-300 text-xs sm:text-sm mt-1">
                       {testimonial.role}
                     </p>
                   </div>

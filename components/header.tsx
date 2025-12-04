@@ -40,7 +40,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto max-w-7xl flex h-16 items-center justify-between px-6 md:px-8">
+      <div className="container mx-auto max-w-7xl flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 md:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
@@ -48,47 +48,47 @@ export function Header() {
             alt="faddit"
             width={248}
             height={55}
-            className="h-4 md:h-5 w-auto object-contain"
+            className="h-5 sm:h-6 md:h-7 w-auto object-contain"
             priority
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-4 lg:gap-8 md:flex">
           <button
             onClick={() => scrollToSection("product")}
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm lg:text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.product}
           </button>
           <button
             onClick={() => scrollToSection("how-it-works")}
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm lg:text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.howItWorks}
           </button>
           <button
             onClick={() => scrollToSection("pricing")}
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm lg:text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.pricing}
           </button>
           <Link
             href="/contact"
-            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-sm lg:text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             {t.header.nav.contact}
           </Link>
         </nav>
 
         {/* Language Toggle & CTA Button */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Language Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="h-8 gap-2 px-3 hidden md:flex">
-                <Globe className="h-4 w-4" />
-                <span className="text-[14px]">
+              <Button variant="ghost" size="sm" className="h-8 gap-1 sm:gap-2 px-2 sm:px-3 hidden md:flex">
+                <Globe className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="text-xs sm:text-sm">
                   {languages.find((lang) => lang.code === locale)?.label}
                 </span>
                 <ChevronDown className="h-3 w-3" />
@@ -118,12 +118,12 @@ export function Header() {
             className="hidden md:flex"
           >
             <Button
-              className="h-10 px-6 rounded-full text-white transition-colors gap-2 btn-black"
+              className="h-9 lg:h-10 px-4 lg:px-6 rounded-full text-white transition-colors gap-1 sm:gap-2 btn-black"
             >
-              <span className="text-sm font-medium">
+              <span className="text-xs lg:text-sm font-medium">
                 {locale === "ko" ? "시작하기" : "Get Started"}
               </span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3 w-3 lg:h-4 lg:w-4" />
             </Button>
           </Link>
 

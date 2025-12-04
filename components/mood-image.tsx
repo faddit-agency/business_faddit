@@ -10,7 +10,7 @@ export function MoodImage() {
   return (
     <section
       ref={ref}
-      className={`relative w-full h-[400px] md:h-[500px] overflow-hidden transition-all duration-700 ${
+      className={`relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px] overflow-hidden transition-all duration-700 ${
         isInView
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
@@ -28,8 +28,8 @@ export function MoodImage() {
 
       {/* Overlay Text */}
       <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="container mx-auto max-w-7xl px-4">
-          <p className="text-2xl md:text-3xl lg:text-4xl font-light text-center leading-relaxed max-w-3xl mx-auto">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light text-center leading-relaxed max-w-3xl mx-auto">
             {t.moodImage.text}
           </p>
         </div>
