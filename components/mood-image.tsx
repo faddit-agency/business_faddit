@@ -11,7 +11,7 @@ export function MoodImage() {
   return (
     <section
       ref={ref}
-      className={`relative w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden transition-all duration-700 ${
+      className={`relative w-full min-h-[280px] sm:min-h-[300px] md:h-[300px] lg:h-[350px] py-12 sm:py-16 md:py-0 overflow-hidden transition-all duration-700 ${
         isInView
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8"
@@ -22,12 +22,12 @@ export function MoodImage() {
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+        <div className="container mx-auto max-w-7xl px-6 sm:px-6 md:px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
             {/* Text and Button Group */}
-            <div className="flex flex-col space-y-6 md:space-y-8">
+            <div className="flex flex-col space-y-8 md:space-y-8 w-full md:w-auto">
               {/* Text Section - Left aligned */}
-              <div className="text-left max-w-2xl space-y-4">
+              <div className="text-center md:text-left max-w-2xl space-y-4 mx-auto md:mx-0">
                 {/* Title - Large size, semi-bold weight */}
                 <p className="text-2xl sm:text-3xl md:text-[32px] font-semibold text-[#333333] leading-tight">
                   {t.moodImage.text}
@@ -39,7 +39,7 @@ export function MoodImage() {
               </div>
               
               {/* Contact Button - Black background with white text */}
-              <div className="flex justify-start">
+              <div className="flex justify-center md:justify-start">
                 <Link href="/contact">
                   <button className="px-8 sm:px-10 md:px-12 py-3 sm:py-4 bg-[#333333] text-white font-medium text-base sm:text-lg md:text-xl rounded-xl hover:bg-[#1a1a1a] transition-colors">
                     {t.header.nav.contact}
