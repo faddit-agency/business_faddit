@@ -49,7 +49,7 @@ export function MoodImage() {
             </div>
             
             {/* Graphic Element Group - Gradient Circles */}
-            <div className="relative flex-shrink-0 w-80 h-80 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] -my-20 md:-my-32">
+            <div className="hidden md:block relative flex-shrink-0 w-80 h-80 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] -my-20 md:-my-32">
               {/* Concentric Gradient Circles */}
               <div className="absolute inset-0 rounded-full" style={{
                 background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(99, 102, 241, 0.25) 20%, rgba(79, 70, 229, 0.2) 40%, rgba(129, 140, 248, 0.15) 60%, rgba(196, 181, 253, 0.1) 80%, transparent 100%)',
