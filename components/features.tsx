@@ -162,7 +162,7 @@ export function Features() {
         </div>
 
         {/* Feature Items */}
-        <div className="space-y-12 sm:space-y-16 md:space-y-20">
+        <div className="space-y-20 sm:space-y-24 md:space-y-32">
           {t.features.items.map((feature, index) => (
             <FeatureItem
               key={feature.id || index}
