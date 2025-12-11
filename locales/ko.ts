@@ -304,9 +304,13 @@ export const ko = {
     form: {
       title: "문의내용을 남겨주세요:)",
       name: "이름",
+      namePlaceholder: "이름을 입력해주세요.",
       contact: "연락처",
+      contactPlaceholder: "연락처를 입력해주세요.",
       email: "이메일",
+      emailPlaceholder: "이메일을 입력해주세요.",
       company: "회사명",
+      companyPlaceholder: "회사명을 입력해주세요.",
       inquiryType: "문의유형",
       inquiryTypePlaceholder: "선택해주세요.",
       inquiryDetails: "문의내용",

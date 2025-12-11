@@ -304,9 +304,13 @@ export const en = {
     form: {
       title: "Please leave your inquiry:)",
       name: "Name",
+      namePlaceholder: "Please enter your name.",
       contact: "Contact",
+      contactPlaceholder: "Please enter your contact information.",
       email: "Email",
+      emailPlaceholder: "Please enter your email.",
       company: "Company Name",
+      companyPlaceholder: "Please enter your company name.",
       inquiryType: "Inquiry Type",
       inquiryTypePlaceholder: "Please select.",
       inquiryDetails: "Inquiry Details",

@@ -19,6 +19,14 @@ export const metadata: Metadata = {
   title: "faddit - 누구나 시작할 수 있는 패션 디자인 솔루션",
   description:
     "패션 디자이너와 봉제 공장을 하나의 디지털 워크스페이스로 연결하는 협업 솔루션",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   verification: {
     google: "ss1YbzohDz5nWhccwwG945gydTh-ZIQGaQeKkOhYoTw",
   },

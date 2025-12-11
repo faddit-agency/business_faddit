@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, ArrowRight, Phone as PhoneIcon } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight, Phone as PhoneIcon, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
@@ -98,10 +98,9 @@ export default function ContactPage() {
                 <span className="text-sm text-[#333333]">{t.contactPage.badge}</span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">{t.contactPage.title}</h1>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl leading-normal">
                 {t.contactPage.description}
-              </p>
-              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
+                <br style={{ display: 'block', marginTop: '0.25rem', lineHeight: '1' }} />
                 {t.contactPage.description2}
               </p>
             </div>
@@ -171,13 +170,11 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <Card className="p-6 sm:p-8 bg-white">
-              <h2 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8">{t.contactPage.form.title}</h2>
-              
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {/* Two Column Input Fields */}
                 <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
-                  <div className="space-y-4">
-                    <label htmlFor="name" className="text-base font-medium">
+                  <div>
+                    <label htmlFor="name" className="text-base font-medium block mb-3">
                       {t.contactPage.form.name}
                     </label>
                     <Input
@@ -185,12 +182,13 @@ export default function ContactPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
+                      placeholder={t.contactPage.form.namePlaceholder}
                       required
                       className="h-12"
                     />
                   </div>
-                  <div className="space-y-4">
-                    <label htmlFor="contact" className="text-base font-medium">
+                  <div>
+                    <label htmlFor="contact" className="text-base font-medium block mb-3">
                       {t.contactPage.form.contact}
                     </label>
                     <Input
@@ -199,12 +197,13 @@ export default function ContactPage() {
                       type="tel"
                       value={formData.contact}
                       onChange={handleChange}
+                      placeholder={t.contactPage.form.contactPlaceholder}
                       required
                       className="h-12"
                     />
                   </div>
-                  <div className="space-y-4">
-                    <label htmlFor="email" className="text-base font-medium">
+                  <div>
+                    <label htmlFor="email" className="text-base font-medium block mb-3">
                       {t.contactPage.form.email}
                     </label>
                     <Input
@@ -213,12 +212,13 @@ export default function ContactPage() {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
+                      placeholder={t.contactPage.form.emailPlaceholder}
                       required
                       className="h-12"
                     />
                   </div>
-                  <div className="space-y-4">
-                    <label htmlFor="company" className="text-base font-medium">
+                  <div>
+                    <label htmlFor="company" className="text-base font-medium block mb-3">
                       {t.contactPage.form.company}
                     </label>
                     <Input
@@ -226,35 +226,53 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
+                      placeholder={t.contactPage.form.companyPlaceholder}
                       className="h-12"
                     />
                   </div>
                 </div>
 
                 {/* Inquiry Type Dropdown */}
-                <div className="space-y-4">
-                  <label htmlFor="inquiryType" className="text-base font-medium">
+                <div>
+                  <label htmlFor="inquiryType" className="text-base font-medium block mb-3">
                     {t.contactPage.form.inquiryType}
                   </label>
-                  <select
-                    id="inquiryType"
-                    name="inquiryType"
-                    value={formData.inquiryType}
-                    onChange={handleChange}
-                    required
-                    className="w-full h-12 rounded-md border border-input bg-transparent pl-3 pr-10 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
-                  >
-                    <option value="">{t.contactPage.form.inquiryTypePlaceholder}</option>
-                    <option value="service">서비스 문의</option>
-                    <option value="production">의류 제작 문의</option>
-                    <option value="partnership">제휴 문의</option>
-                    <option value="other">기타</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      value={formData.inquiryType}
+                      onChange={handleChange}
+                      required
+                      className="w-full h-12 rounded-md border border-input bg-transparent pl-3 pr-16 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] appearance-none"
+                    >
+                      <option value="">{t.contactPage.form.inquiryTypePlaceholder}</option>
+                      <option value="service">서비스 문의</option>
+                      <option value="production">의류 제작 문의</option>
+                      <option value="partnership">제휴 문의</option>
+                      <option value="other">기타</option>
+                    </select>
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg
+                        className="w-5 h-5 text-gray-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Inquiry Details Textarea */}
-                <div className="space-y-4">
-                  <label htmlFor="inquiryDetails" className="text-base font-medium">
+                <div>
+                  <label htmlFor="inquiryDetails" className="text-base font-medium block mb-3">
                     {t.contactPage.form.inquiryDetails}
                   </label>
                   <Textarea
@@ -299,9 +317,16 @@ export default function ContactPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-[#333333] text-white hover:bg-[#333333]/90 h-12 px-8 text-base font-semibold"
+                    className="bg-[#333333] text-white hover:bg-[#333333]/90 h-12 px-8 text-base font-semibold disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? t.contact.submitting : t.contactPage.submit}
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        {t.contact.submitting}
+                      </span>
+                    ) : (
+                      t.contactPage.submit
+                    )}
                   </Button>
                 </div>
 

@@ -303,9 +303,13 @@ export const zhTW = {
     form: {
       title: "請留下您的詢問：）",
       name: "姓名",
+      namePlaceholder: "請輸入您的姓名。",
       contact: "聯絡方式",
+      contactPlaceholder: "請輸入您的聯絡方式。",
       email: "電子郵件",
+      emailPlaceholder: "請輸入您的電子郵件。",
       company: "公司名稱",
+      companyPlaceholder: "請輸入您的公司名稱。",
       inquiryType: "詢問類型",
       inquiryTypePlaceholder: "請選擇。",
       inquiryDetails: "詢問內容",
