@@ -282,7 +282,8 @@ export const ko = {
   contactPage: {
     badge: "Contact",
     title: "Contact Us",
-    description: "서비스에 대한 궁금증부터, 의류 제작 관련 문의까지 편하게 남겨주세요. 담당자가 확인 후 빠르게 연락드리겠습니다.",
+    description: "서비스에 대한 궁금증부터, 의류 제작 관련 문의까지 편하게 남겨주세요.",
+    description2: "담당자가 확인 후 빠르게 연락드리겠습니다.",
     cards: {
       email: {
         title: "Email",

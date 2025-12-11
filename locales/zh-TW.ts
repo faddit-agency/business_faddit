@@ -281,7 +281,8 @@ export const zhTW = {
   contactPage: {
     badge: "Contact",
     title: "聯絡我們",
-    description: "從服務相關問題到服裝生產相關諮詢，請隨時留言。我們的代表將確認後迅速與您聯繫。",
+    description: "從服務相關問題到服裝生產相關諮詢，請隨時留言。",
+    description2: "我們的代表將確認後迅速與您聯繫。",
     cards: {
       email: {
         title: "Email",

@@ -282,7 +282,8 @@ export const en = {
   contactPage: {
     badge: "Contact",
     title: "Contact Us",
-    description: "Please feel free to leave any inquiries, from service questions to clothing production. Our representative will check and contact you promptly.",
+    description: "Please feel free to leave any inquiries, from service questions to clothing production.",
+    description2: "Our representative will check and contact you promptly.",
     cards: {
       email: {
         title: "Email",

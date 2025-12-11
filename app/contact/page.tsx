@@ -101,6 +101,9 @@ export default function ContactPage() {
               <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
                 {t.contactPage.description}
               </p>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
+                {t.contactPage.description2}
+              </p>
             </div>
 
             {/* Contact Cards */}
@@ -173,7 +176,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {/* Two Column Input Fields */}
                 <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <label htmlFor="name" className="text-base font-medium">
                       {t.contactPage.form.name}
                     </label>
@@ -186,7 +189,7 @@ export default function ContactPage() {
                       className="h-12"
                     />
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <label htmlFor="contact" className="text-base font-medium">
                       {t.contactPage.form.contact}
                     </label>
@@ -200,7 +203,7 @@ export default function ContactPage() {
                       className="h-12"
                     />
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <label htmlFor="email" className="text-base font-medium">
                       {t.contactPage.form.email}
                     </label>
@@ -214,7 +217,7 @@ export default function ContactPage() {
                       className="h-12"
                     />
                   </div>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <label htmlFor="company" className="text-base font-medium">
                       {t.contactPage.form.company}
                     </label>
@@ -229,7 +232,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Inquiry Type Dropdown */}
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <label htmlFor="inquiryType" className="text-base font-medium">
                     {t.contactPage.form.inquiryType}
                   </label>
@@ -239,7 +242,7 @@ export default function ContactPage() {
                     value={formData.inquiryType}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
+                    className="w-full h-12 rounded-md border border-input bg-transparent pl-3 pr-10 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
                   >
                     <option value="">{t.contactPage.form.inquiryTypePlaceholder}</option>
                     <option value="service">서비스 문의</option>
@@ -250,7 +253,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Inquiry Details Textarea */}
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <label htmlFor="inquiryDetails" className="text-base font-medium">
                     {t.contactPage.form.inquiryDetails}
                   </label>
