@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, ArrowRight, Phone as PhoneIcon, Loader2 } from "lucide-react";
+import { Mail, MapPin, ArrowRight, Phone as PhoneIcon, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 
@@ -106,7 +106,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Cards */}
-            <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2">
               {/* Email Card */}
               <Card className="p-6 bg-white">
                 <div className="flex items-center gap-3 mb-4">
@@ -123,26 +123,6 @@ export default function ContactPage() {
                   className="flex items-center gap-2 text-[#333333] hover:underline"
                 >
                   <span className="text-base">{t.contactPage.cards.email.value}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Card>
-
-              {/* Phone Card */}
-              <Card className="p-6 bg-white">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-[#333333] rounded-lg flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold">{t.contactPage.cards.phone.title}</h3>
-                </div>
-                <p className="text-base text-muted-foreground mb-4">
-                  {t.contactPage.cards.phone.instruction}
-                </p>
-                <Link
-                  href={`tel:${t.contactPage.cards.phone.value.replace(/-/g, "")}`}
-                  className="flex items-center gap-2 text-[#333333] hover:underline"
-                >
-                  <span className="text-base">{t.contactPage.cards.phone.value}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Card>
