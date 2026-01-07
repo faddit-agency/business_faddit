@@ -69,7 +69,7 @@ export function Footer() {
               <AtSign className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </a>
             <a
-              href="https://www.instagram.com/faddit"
+              href="https://www.instagram.com/faddit__official/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
